@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pamella Shop - Premium Toys, Winter & Baby Essentials</title>
+    <!-- UIverse CSS -->
+    <link rel="stylesheet" href="https://cdn.uiverse.io/all.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #4ecdc4;
+            --accent: #ffbe0b;
+            --dark: #2b2d42;
+            --light: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            margin: 0;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        
+        .logo span {
+            color: var(--dark);
+        }
+        
+        .slogan {
+            font-style: italic;
+            color: var(--secondary);
+            margin-left: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .cart-icon {
+            position: relative;
+            margin-left: 2rem;
+            cursor: pointer;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.7rem;
+        }
+        
+        /* Hero Slider */
+        .hero {
+            position: relative;
+            min-height: 480px;
+            background-image:
+                url('https://images.unsplash.com/photo-1604917018033-26d22f3b5a0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'),
+                url('https://images.unsplash.com/photo-1594782910215-7cfd5bf5a6cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'),
+                url('https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover, cover, cover;
+            background-position: center center, left top, right bottom;
+            background-repeat: no-repeat, no-repeat, no-repeat;
+            background-blend-mode: multiply, lighten, screen;
+            z-index: 1;
+        }
+        
+        .hero .slider {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .slide {
+            background: transparent !important;
+            /* Remove inline background-image, handled by .hero now */
+        }
+        
+        .slider {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            transition: transform 2s ease-in-out;
+        }
+        
+        .slide {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .slide-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .slide h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .slide p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        /* Categories */
+        .section-title {
+            text-align: center;
+            margin: 4rem 0 2rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 0 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .category {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 300px;
+            position: relative;
+        }
+        
+        .category .category-img {
+            background: rgba(255,255,255,0.7);
+        }
+        
+        .category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .category-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .category-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .category:hover .category-img img {
+            transform: scale(1.1);
+        }
+        
+        .category-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .category-info h3 {
+            margin: 0 0 1rem;
+            color: var(--dark);
+        }
+        
+        /* Products */
+        #products {
+            background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-blend-mode: lighten;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 0 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .product {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .product:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 1;
+        }
+        
+        .product-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product:hover .product-img img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-info h3 {
+            margin: 0 0 0.5rem;
+            color: var(--dark);
+        }
+        
+        .product-info .category-tag {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .product-info p {
+            margin: 0.5rem 0 1rem;
+            color: #666;
+        }
+        
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        
+        .price {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+        }
+        
+        /* About Us */
+        .about {
+            background-color: var(--light);
+            padding: 5rem 5%;
+            margin-top: 4rem;
+        }
+        
+        .about-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        /* Checkout */
+        .checkout {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .checkout-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .checkout-form h2, .order-summary h2 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .order-summary {
+            background-color: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .summary-total {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+        
+        .footer-column h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background-color: rgba(255,255,255,0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .close-modal:hover {
+            color: var(--primary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content, .checkout-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            .hero {
+                height: 60vh;
+                margin-top: 120px;
+            }
+            
+            .slide h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <h1><span>Pamella</span> Shop</h1>
+                <p class="slogan">Joyful Moments, Delivered</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon" id="cartIcon">
+                <i class="fas fa-shopping-cart fa-lg"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <section class="hero" id="home">
+        <div class="slider" id="slider">
+            <div class="slide">
+                <div class="slide-content">
+                    <h2>Baby Essentials You Can Trust</h2>
+                    <p>Premium quality products for your little ones' comfort and safety</p>
+                    <button class="uiverse-button" onclick="location.href='#products'">
+                        <span class="text">Shop Now</span>
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-content">
+                    <h2>Educational Toys for Curious Minds</h2>
+                    <p>Spark imagination and learning with our hand-picked selection of educational toys</p>
+                    <button class="uiverse-button" onclick="location.href='#products'">
+                        <span class="text">Explore Toys</span>
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-content">
+                    <h2>Winter Wonderland Collection</h2>
+                    <p>Stay warm and stylish with our premium winter essentials for the whole family</p>
+                    <button class="uiverse-button" onclick="location.href='#products'">
+                        <span class="text">Discover Winter Gear</span>
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section id="categories">
+        <div class="section-title">
+            <h2>Our Categories</h2>
+        </div>
+        <div class="categories">
+            <div class="category category-toys">
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1572635196184-84e35138cf62?ixlib=rb-4.0.3&auto=format&fit=crop&w=880&q=80" alt="Toys">
+                </div>
+                <div class="category-info">
+                    <h3>Toys</h3>
+                    <button class="uiverse-button-secondary" onclick="location.href='#toys'">
+                        <span class="text">Shop Toys</span>
+                    </button>
+                </div>
+            </div>
+            <div class="category category-winter">
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&auto=format&fit=crop&w=880&q=80" alt="Winter">
+                </div>
+                <div class="category-info">
+                    <h3>Winter Essentials</h3>
+                    <button class="uiverse-button-secondary" onclick="location.href='#winter'">
+                        <span class="text">Shop Winter</span>
+                    </button>
+                </div>
+            </div>
+            <div class="category category-baby">
+                <div class="category-img">
+                    <img src="https://images.unsplash.com/photo-1604467794349-0a2e60c5be6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=880&q=80" alt="Baby">
+                </div>
+                <div class="category-info">
+                    <h3>Baby Products</h3>
+                    <button class="uiverse-button-secondary" onclick="location.href='#baby'">
+                        <span class="text">Shop Baby</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section id="products">
+        <div class="section-title">
+            <h2>Featured Products</h2>
+        </div>
+        
+        <!-- Toys Products -->
+        <div id="toys" class="section-title">
+            <h3>Toys</h3>
+        </div>
+        <div class="products">
+            <div class="product">
+                <div class="product-badge">Bestseller</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Wooden Train Set">
+                </div>
+                <div class="product-info">
+                    <h3>Wooden Train Set</h3>
+                    <span class="category-tag">Toys</span>
+                    <p>Premium wooden train set with 45 pieces for endless creative play.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="old-price">R599</span>
+                            <span class="price">R449</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="1" data-name="Wooden Train Set" data-price="449">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-badge">New</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1594782910215-7cfd5bf5a6cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="STEM Building Blocks">
+                </div>
+                <div class="product-info">
+                    <h3>STEM Building Blocks</h3>
+                    <span class="category-tag">Toys</span>
+                    <p>Educational building blocks that teach basic engineering concepts.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">R399</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="2" data-name="STEM Building Blocks" data-price="399">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Plush Animal Set">
+                </div>
+                <div class="product-info">
+                    <h3>Plush Animal Set</h3>
+                    <span class="category-tag">Toys</span>
+                    <p>Soft and cuddly plush animals perfect for bedtime companions.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">R279</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="3" data-name="Plush Animal Set" data-price="279">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-badge">Sale</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Interactive Learning Tablet">
+                </div>
+                <div class="product-info">
+                    <h3>Interactive Learning Tablet</h3>
+                    <span class="category-tag">Toys</span>
+                    <p>Educational tablet with 50+ learning activities for ages 3-6.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="old-price">R899</span>
+                            <span class="price">R699</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="4" data-name="Interactive Learning Tablet" data-price="699">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1589254065878-42c9da997008?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Building Blocks">
+                </div>
+                <div class="product-info">
+                    <h3>Colorful Building Blocks</h3>
+                    <span class="category-tag">Toys</span>
+                    <p>100-piece set of colorful building blocks for creative play.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">R349</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="13" data-name="Colorful Building Blocks" data-price="349">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-badge">New</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1599623560574-39d485900c95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Doll House">
+                </div>
+                <div class="product-info">
+                    <h3>Wooden Doll House</h3>
+                    <span class="category-tag">Toys</span>
+                    <p>Beautiful wooden doll house with furniture and accessories.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">R799</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="14" data-name="Wooden Doll House" data-price="799">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-badge">Sale</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1594782910215-7cfd5bf5a6cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Puzzle Set">
+                </div>
+                <div class="product-info">
+                    <h3>Educational Puzzle Set</h3>
+                    <span class="category-tag">Toys</span>
+                    <p>Set of 5 educational puzzles for different age groups.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="old-price">R499</span>
+                            <span class="price">R399</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="15" data-name="Educational Puzzle Set" data-price="399">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Musical Instruments">
+                </div>
+                <div class="product-info">
+                    <h3>Kids Musical Instruments</h3>
+                    <span class="category-tag">Toys</span>
+                    <p>Set of 8 musical instruments for little musicians.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">R449</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="16" data-name="Kids Musical Instruments" data-price="449">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Winter Products -->
+        <div id="winter" class="section-title">
+            <h3>Winter Essentials</h3>
+        </div>
+        <div class="products">
+            <div class="product">
+                <div class="product-badge">Bestseller</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Premium Wool Scarf">
+                </div>
+                <div class="product-info">
+                    <h3>Premium Wool Scarf</h3>
+                    <span class="category-tag">Winter</span>
+                    <p>100% merino wool scarf for ultimate warmth and comfort.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">R349</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="5" data-name="Premium Wool Scarf" data-price="349">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Thermal Gloves">
+                </div>
+                <div class="product-info">
+                    <h3>Thermal Gloves</h3>
+                    <span class="category-tag">Winter</span>
+                    <p>Touchscreen-compatible thermal gloves for cold winter days.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">R249</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="6" data-name="Thermal Gloves" data-price="249">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-badge">New</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Fleece-Lined Beanie">
+                </div>
+                <div class="product-info">
+                    <h3>Fleece-Lined Beanie</h3>
+                    <span class="category-tag">Winter</span>
+                    <p>Super soft fleece-lined beanie available in multiple colors.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">R199</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="7" data-name="Fleece-Lined Beanie" data-price="199">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-badge">Sale</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1520367445093-50dc08a59d9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Winter Coat">
+                </div>
+                <div class="product-info">
+                    <h3>Winter Coat</h3>
+                    <span class="category-tag">Winter</span>
+                    <p>Water-resistant winter coat with thermal insulation.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="old-price">R1299</span>
+                            <span class="price">R999</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="8" data-name="Winter Coat" data-price="999">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1520367745676-56196632073f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Winter Boots">
+                </div>
+                <div class="product-info">
+                    <h3>Kids Winter Boots</h3>
+                    <span class="category-tag">Winter</span>
+                    <p>Waterproof winter boots with thermal lining for kids.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">R499</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="17" data-name="Kids Winter Boots" data-price="499">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-badge">New</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Thermal Socks">
+                </div>
+                <div class="product-info">
+                    <h3>Thermal Socks Pack</h3>
+                    <span class="category-tag">Winter</span>
+                    <p>3-pack of merino wool thermal socks for the whole family.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">R299</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="18" data-name="Thermal Socks Pack" data-price="299">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-badge">Sale</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Winter Blanket">
+                </div>
+                <div class="product-info">
+                    <h3>Heated Winter Blanket</h3>
+                    <span class="category-tag">Winter</span>
+                    <p>Electric heated blanket with 3 temperature settings.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="old-price">R799</span>
+                            <span class="price">R599</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="19" data-name="Heated Winter Blanket" data-price="599">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1520367445093-50dc08a59d9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Winter Pajamas">
+                </div>
+                <div class="product-info">
+                    <h3>Kids Winter Pajamas</h3>
+                    <span class="category-tag">Winter</span>
+                    <p>Soft fleece pajamas set for cold winter nights.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">R349</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="20" data-name="Kids Winter Pajamas" data-price="349">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Baby Products -->
+        <div id="baby" class="section-title">
+            <h3>Baby Essentials</h3>
+        </div>
+        <div class="products">
+            <div class="product">
+                <div class="product-badge">Bestseller</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1604467794349-0a2e60c5be6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Organic Cotton Onesies">
+                </div>
+                <div class="product-info">
+                    <h3>Organic Cotton Onesies</h3>
+                    <span class="category-tag">Baby</span>
+                    <p>3-pack of ultra-soft organic cotton onesies for newborns.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">R349</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="9" data-name="Organic Cotton Onesies" data-price="349">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1604917018033-26d22f3b5a0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Baby Bottle Set">
+                </div>
+                <div class="product-info">
+                    <h3>Anti-Colic Baby Bottle Set</h3>
+                    <span class="category-tag">Baby</span>
+                    <p>5-piece set of BPA-free anti-colic baby bottles.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">R449</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="10" data-name="Anti-Colic Baby Bottle Set" data-price="449">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-badge">New</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt="Nursing Pillow">
+                </div>
+                <div class="product-info">
+                    <h3>Memory Foam Nursing Pillow</h3>
+                    <span class="category-tag">Baby</span>
+                    <p>Ergonomic memory foam pillow for comfortable nursing.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="old-price">R599</span>
+                            <span class="price">R449</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="11" data-name="Memory Foam Nursing Pillow" data-price="449">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-badge">Sale</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80" alt="Baby Carrier">
+                </div>
+                <div class="product-info">
+                    <h3>Ergonomic Baby Carrier</h3>
+                    <span class="category-tag">Baby</span>
+                    <p>Comfortable baby carrier with lumbar support for parents.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="old-price">R999</span>
+                            <span class="price">R799</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="12" data-name="Ergonomic Baby Carrier" data-price="799">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1604917018033-26d22f3b5a0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Baby Blanket">
+                </div>
+                <div class="product-info">
+                    <h3>Organic Baby Blanket</h3>
+                    <span class="category-tag">Baby</span>
+                    <p>Soft organic cotton baby blanket with cute animal prints.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">R299</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="21" data-name="Organic Baby Blanket" data-price="299">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-badge">New</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Baby Monitor">
+                </div>
+                <div class="product-info">
+                    <h3>Smart Baby Monitor</h3>
+                    <span class="category-tag">Baby</span>
+                    <p>HD video baby monitor with temperature sensor and night vision.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">R899</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="22" data-name="Smart Baby Monitor" data-price="899">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1604467794349-0a2e60c5be6e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Baby Bath Tub">
+                </div>
+                <div class="product-info">
+                    <h3>Foldable Baby Bath Tub</h3>
+                    <span class="category-tag">Baby</span>
+                    <p>Space-saving foldable baby bath tub with temperature indicator.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">R399</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="23" data-name="Foldable Baby Bath Tub" data-price="399">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-badge">New</div>
+                <div class="product-img">
+                    <img src="https://images.unsplash.com/photo-1604917018033-26d22f3b5a0e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Baby High Chair">
+                </div>
+                <div class="product-info">
+                    <h3>Adjustable Baby High Chair</h3>
+                    <span class="category-tag">Baby</span>
+                    <p>Multi-functional high chair that grows with your baby.</p>
+                    <div class="product-price">
+                        <div>
+                            <span class="price">R699</span>
+                        </div>
+                        <button class="uiverse-button-small add-to-cart" data-id="24" data-name="Adjustable Baby High Chair" data-price="699">
+                            <span class="text">Add to Cart</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Our Story</h2>
+                <p>Founded in 2015, Pamella Shop brings joy to families through high-quality, thoughtfully curated products. Our team of parents and educators carefully selects each item, prioritizing safety, durability, and educational value.</p>
+                <p>We're more than just a shop - we're a community. When you choose Pamella Shop, you're supporting a small business that cares deeply about making childhood magical.</p>
+                <button class="uiverse-button" onclick="location.href='#contact'">
+                    <span class="text">Get in Touch</span>
+                </button>
+            </div>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Pamella Shop Team">
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="checkout">
+                <div class="checkout-container">
+                    <div class="checkout-form">
+                        <h2>Checkout Details</h2>
+                        <form id="paymentForm">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" id="firstName" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" id="lastName" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Street Address</label>
+                                <input type="text" id="address" class="form-control" required>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" id="city" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="postalCode">Postal Code</label>
+                                    <input type="text" id="postalCode" class="form-control" required>
+                                </div>
+                            </div>
+                            <input type="hidden" id="amount" name="amount">
+                            <input type="hidden" id="itemName" name="item_name">
+                            <input type="hidden" id="itemDescription" name="item_description">
+                        </form>
+                    </div>
+                    <div class="order-summary">
+                        <h2>Your Order</h2>
+                        <div id="orderItems">
+                            <!-- Cart items will be inserted here -->
+                        </div>
+                        <div class="summary-total">
+                            <span>Total:</span>
+                            <span id="orderTotal">R0.00</span>
+                        </div>
+                        <button class="uiverse-button" id="payfastButton" style="width: 100%; margin-top: 2rem;">
+                            <span class="text">Pay with PayFast</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Pamella Shop</h3>
+                <p>Joyful Moments, Delivered</p>
+                <p>We're dedicated to providing the highest quality toys, winter essentials, and baby products to make your family life easier and more joyful.</p>
+                <div class="social-links">
+                    <a href="#" title="Visit our Facebook page"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Visit our Instagram profile"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="Visit our TikTok channel"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#" id="viewCartLink">View Cart</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Toy Street, Cape Town, South Africa</li>
+                    <li><i class="fas fa-phone"></i> +27 21 123 4567</li>
+                    <li><i class="fas fa-envelope"></i> hello@pamellashop.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-5PM | Sat: 9AM-2PM</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Pamella Shop. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Shopping Cart Functionality
+        let cart = [];
+        let currentSlide = 0;
+        
+        // Initialize slider
+        const slider = document.getElementById('slider');
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % 3;
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+        // Auto-rotate slides every 20 seconds
+        setInterval(nextSlide, 20000);
+
+        // Make cart icon clickable
+        document.getElementById('cartIcon').addEventListener('click', openCheckoutModal);
+
+        // Add to Cart
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                const name = this.getAttribute('data-name');
+                const price = parseInt(this.getAttribute('data-price'));
+                const existing = cart.find(item => item.id === id);
+                if (existing) {
+                    existing.qty += 1;
+                } else {
+                    cart.push({ id, name, price, qty: 1 });
+                }
+                updateCartCount();
+            });
+        });
+
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.querySelector('.cart-count').textContent = count;
+        }
+
+        // Checkout Modal
+        const modal = document.getElementById('checkoutModal');
+        const closeModalBtn = document.querySelector('.close-modal');
+        closeModalBtn.onclick = () => modal.style.display = 'none';
+        window.onclick = function(event) {
+            if (event.target == modal) modal.style.display = 'none';
+        };
+
+        function openCheckoutModal() {
+            renderCheckout();
+            modal.style.display = 'flex';
+        }
+
+        function renderCheckout() {
+            const checkoutForm = document.querySelector('.checkout-form');
+            if (!cart.length) {
+                checkoutForm.innerHTML = '<p>Your cart is empty.</p>';
+                document.querySelector('.order-summary')?.remove();
+                return;
+            }
+            // Redesigned checkout form
+            let formHtml = `
+                <div class="checkout-card" style="background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.08);padding:2rem 1.5rem 1.5rem 1.5rem;max-width:420px;margin:2rem auto;">
+                    <h2 style="text-align:center;color:var(--primary);margin-bottom:1.5rem;">Secure Checkout</h2>
+                    <form id="payfastForm">
+                        <div class="form-group"><label>Name</label><input class="form-control" name="name" required></div>
+                        <div class="form-group"><label>Email</label><input class="form-control" name="email" type="email" required></div>
+                        <div class="form-group"><label>Address</label><input class="form-control" name="address" required></div>
+                        <div class="form-group"><label>Card Number</label><input class="form-control" name="cardnumber" maxlength="19" pattern="[0-9]{16,19}" required placeholder="1234 5678 9012 3456"></div>
+                        <div class="form-row" style="display:flex;gap:1rem;">
+                            <div class="form-group" style="flex:1;"><label>CVV</label><input class="form-control" name="cvv" maxlength="4" pattern="[0-9]{3,4}" required placeholder="123"></div>
+                            <div class="form-group" style="flex:1;"><label>Expiry Year</label><input class="form-control" name="year" maxlength="4" pattern="[0-9]{4}" required placeholder="2027"></div>
+                        </div>
+                        <button class="uiverse-button" id="payfastBtn" style="margin-top:2rem;width:100%;font-size:1.1rem;">Pay with Payfast</button>
+                    </form>
+                </div>
+            `;
+            checkoutForm.innerHTML = formHtml;
+            // Order summary with Cart Items on top, then Total Items and Total
+            let summaryHtml = '<div class="order-summary" style="background:var(--light);border-radius:12px;padding:1.5rem;margin:2rem auto 0 auto;max-width:420px;box-shadow:0 2px 12px rgba(0,0,0,0.04);">';
+            summaryHtml += '<h2 style="color:var(--primary);font-size:1.3rem;">Order Summary</h2>';
+            summaryHtml += '<h3 style="margin-top:1rem;text-align:center;color:var(--secondary);">Cart Items</h3>';
+            summaryHtml += '<div id="cartItems">';
+            cart.forEach(item => {
+                summaryHtml += `<div class="summary-item" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+                    <span>${item.name}</span>
+                    <div style="display:flex;align-items:center;gap:0.5rem;">
+                        <button type="button" class="qty-btn" data-id="${item.id}" data-action="decrease" style="background:var(--light);border:none;border-radius:50%;width:28px;height:28px;font-size:1.1rem;cursor:pointer;">-</button>
+                        <span class="item-qty" style="min-width:24px;text-align:center;">${item.qty}</span>
+                        <button type="button" class="qty-btn" data-id="${item.id}" data-action="increase" style="background:var(--light);border:none;border-radius:50%;width:28px;height:28px;font-size:1.1rem;cursor:pointer;">+</button>
+                        <span style="margin-left:1rem;font-weight:500;">R${item.price * item.qty}</span>
+                    </div>
+                </div>`;
+            });
+            summaryHtml += '</div>';
+            let total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+            let totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            summaryHtml += `<div class="summary-total" style="font-weight:bold;margin-top:1rem;">Total Items: ${totalItems}</div>`;
+            summaryHtml += `<div class="summary-total" style="font-weight:bold;">Total: R${total}</div>`;
+            summaryHtml += '</div>';
+            let orderSummary = document.querySelector('.order-summary');
+            if (!orderSummary) {
+                const container = document.querySelector('.checkout-container');
+                const div = document.createElement('div');
+                div.className = 'order-summary';
+                div.innerHTML = summaryHtml;
+                container.appendChild(div);
+            } else {
+                orderSummary.innerHTML = summaryHtml;
+            }
+            // Quantity buttons
+            document.querySelectorAll('.qty-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    const action = this.getAttribute('data-action');
+                    const item = cart.find(i => i.id === id);
+                    if (action === 'increase') item.qty++;
+                    if (action === 'decrease' && item.qty > 1) item.qty--;
+                    updateCartCount();
+                    renderCheckout();
+                });
+            });
+            // Only one Payfast button (in the form)
+            document.getElementById('payfastBtn').onclick = function(e) {
+                e.preventDefault();
+                const form = document.getElementById('payfastForm');
+                const name = form.name.value.trim();
+                const email = form.email.value.trim();
+                const address = form.address.value.trim();
+                const cardnumber = form.cardnumber.value.trim();
+                const cvv = form.cvv.value.trim();
+                const year = form.year.value.trim();
+                if (!name || !email || !address || !cardnumber || !cvv || !year) {
+                    showPayfastMessage('Check your details');
+                    return;
+                }
+                if (parseInt(year) < 2025) {
+                    showPayfastMessage('Your card is expired');
+                    return;
+                }
+                // Simulate payment success
+                setTimeout(() => {
+                    // Simulate random success/fail
+                    if (Math.random() > 0.2) {
+                        cart = [];
+                        updateCartCount();
+                        renderCheckout();
+                        setTimeout(() => {
+                            // Custom confirmation popup
+                            const confirmDiv = document.createElement('div');
+                            confirmDiv.style.position = 'fixed';
+                            confirmDiv.style.top = '0';
+                            confirmDiv.style.left = '0';
+                            confirmDiv.style.width = '100vw';
+                            confirmDiv.style.height = '100vh';
+                            confirmDiv.style.background = 'rgba(0,0,0,0.5)';
+                            confirmDiv.style.display = 'flex';
+                            confirmDiv.style.justifyContent = 'center';
+                            confirmDiv.style.alignItems = 'center';
+                            confirmDiv.style.zIndex = '3000';
+                            confirmDiv.innerHTML = `<div style="background:#fff;padding:2rem 2.5rem;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,0.15);text-align:center;max-width:90vw;">
+                                <h2 style='color:var(--primary);margin-bottom:1rem;'>Purchase Confirmed</h2>
+                                <p style='font-size:1.1rem;'>Your Purchase was Success and thank you for trusting Us</p>
+                                <button style='margin-top:2rem;padding:0.7rem 2.5rem;background:var(--primary);color:#fff;border:none;border-radius:8px;font-size:1rem;cursor:pointer;' id='closeConfirmPopup'>OK</button>
+                            </div>`;
+                            document.body.appendChild(confirmDiv);
+                            document.getElementById('closeConfirmPopup').onclick = function() {
+                                confirmDiv.remove();
+                                modal.style.display = 'none';
+                            };
+                        }, 300);
+                    } else {
+                        showPayfastMessage('Check your details');
+                    }
+                }, 1000);
+            };
+        }
+        function showPayfastMessage(msg) {
+            let msgDiv = document.getElementById('payfastMsg');
+            if (!msgDiv) {
+                msgDiv = document.createElement('div');
+                msgDiv.id = 'payfastMsg';
+                msgDiv.style.color = 'var(--primary)';
+                msgDiv.style.margin = '1rem 0';
+                document.querySelector('.checkout-form').prepend(msgDiv);
+            }
+            msgDiv.textContent = msg;
+        }
+    </script>
+</body>
+</html>
