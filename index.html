@@ -622,6 +622,54 @@
                 grid-template-columns: 1fr;
             }
         }
+        
+        @media (max-width: 1200px) {
+    .checkout-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .checkout-form, .order-summary {
+        max-width: 100%;
+        margin: 0 auto 2rem auto;
+    }
+}
+@media (max-width: 768px) {
+    .checkout-form, .order-summary {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    .checkout-card, .order-summary {
+        max-width: 98vw;
+        padding: 1rem;
+    }
+    .checkout-card h2, .order-summary h2 {
+        font-size: 1.1rem;
+    }
+    .form-row {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+    }
+    .qty-btn {
+        width: 24px !important;
+        height: 24px !important;
+        font-size: 1rem !important;
+    }
+}
+@media (max-width: 480px) {
+    .checkout-card, .order-summary {
+        padding: 0.5rem;
+        font-size: 0.95rem;
+    }
+    .checkout-card h2, .order-summary h2 {
+        font-size: 1rem;
+    }
+    .form-group label, .form-control {
+        font-size: 0.95rem;
+    }
+    .summary-item span, .summary-total {
+        font-size: 0.95rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -1294,7 +1342,7 @@
                             <span>Total:</span>
                             <span id="orderTotal">R0.00</span>
                         </div>
-                        <button class="uiverse-button" id="payfastButton" style="width: 100%; margin-top: 2rem;">
+                        <button class="uiverse-button" id="payfastButton">
                             <span class="text">Pay with PayFast</span>
                         </button>
                     </div>
@@ -1434,7 +1482,6 @@
                     </div>
                 </div>`;
             });
-            summaryHtml += '</div>';
             let total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
             let totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
             summaryHtml += `<div class="summary-total" style="font-weight:bold;margin-top:1rem;">Total Items: ${totalItems}</div>`;
